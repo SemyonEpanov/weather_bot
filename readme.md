@@ -46,3 +46,33 @@ my_weather_bot/
 │   └── weather.py             # Обработка /weather, FSM, инлайн-кнопки
 ├── main.py                    # Точка входа. Запускает бота (dp.run_polling)
 └── requirements.txt           # Зависимости проекта (aiogram, requests и т.д.)
+```
+
+---
+
+## Запуск
+
+- **Шаги** для запуска проекта:
+  - Клонируем репозиторий
+  - Устанавливаем необходимые пакеты
+  - Ставим API-keys в config.py
+  - Запускаем + радуемся
+
+```bash
+git clone https://github.com/SemyonEpanov/weather_bot.git
+cd weather_bot
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+TELEGRAM_BOT_TOKEN = ""
+ACCUWEATHER_API_KEY = ""
+```
+
+```bash
+python main.py
+```
+---

@@ -44,7 +44,7 @@ async def process_end_location(message: Message, state: FSMContext):
     await message.answer(
         "Есть ли у вас промежуточные остановки?\n"
         "Если да, перечислите их через запятую.\n"
-        "Если нет, просто напишите `нет`."
+        "Если нет, просто напишите 'нет'."
     )
 
 
@@ -125,13 +125,13 @@ async def process_confirm_route(callback: CallbackQuery, state: FSMContext):
     result_text_parts = []
 
     for i, loc in enumerate(locations, start=1):
-        forecasts_list = get_weather_data(loc, days)
+        # Вызов асинхронной функции получения погоды
+        forecasts_list = await get_weather_data(loc, days)
         if forecasts_list == "api_error":
             part = f"Город: {loc}\nНе удалось связаться с API AccuWeather. Попробуйте позже."
         elif forecasts_list is None:
             part = f"Город: {loc}\nНе удалось получить данные. Возможно, указан неверный город?"
         else:
-            # Формируем текст прогноза
             part_header = f"**{i}. {loc}**\n"
             lines = []
             for day_data in forecasts_list:
